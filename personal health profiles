@@ -1,0 +1,39 @@
+# Define a dictionary to store personal health profiles
+personal_health_profiles = {}
+
+# Function to update or retrieve a user's health profile
+def update_health_profile(user, health_metric, value=None):
+    if user not in personal_health_profiles:
+        personal_health_profiles[user] = {}
+    if value is None:
+        # Retrieve health metric value
+        return personal_health_profiles[user].get(health_metric, None)
+    else:
+        # Update health metric value
+        personal_health_profiles[user][health_metric] = value
+
+# Example usage
+user = "Alice"
+health_metric = "cholesterol"
+
+# Update Alice's cholesterol level
+update_health_profile(user, health_metric, 180)
+
+# Retrieve Alice's cholesterol level
+cholesterol_value = update_health_profile(user, health_metric)
+if cholesterol_value is not None:
+    print(f"{user}'s {health_metric} level: {cholesterol_value}")
+else:
+    print(f"{user} has no recorded {health_metric} level.")
+
+/*
+Explanation of the implementation:
+
+We define a dictionary personal_health_profiles to store personal health profiles for different users. Each user's health profile is represented as a nested dictionary, where the outer key is the user's name and the inner keys are health metrics.
+The update_health_profile function takes a user, a health metric, and an optional value as input. If a value is provided, it updates the user's health profile with the specified value for the given health metric. If no value is provided, it retrieves the value of the specified health metric from the user's health profile.
+We demonstrate the usage of the system by updating and retrieving Alice's cholesterol level.
+This implementation follows the logical representation provided in FOL, where ∀x∀y∀z (User(x) ∧ Health_Metric(y) ∧ Value(z) ∧ Health_Profile(x, y, z)). It allows us to store and retrieve health metric values for different users, forming their personal health profiles.
+
+In a real-world scenario, you would need to expand the system to support more health metrics, handle additional functionalities such as trend analysis and goal setting, and potentially integrate the system with a user interface for input/output and a database for storing and querying personal health profiles.
+
+*/
