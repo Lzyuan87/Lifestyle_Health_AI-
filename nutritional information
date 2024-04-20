@@ -1,0 +1,38 @@
+# Define a dictionary to store nutritional information
+nutritional_info = {}
+
+# Function to update or retrieve nutritional information for a food
+def update_nutritional_info(food, nutrient, quantity=None):
+    if food not in nutritional_info:
+        nutritional_info[food] = {}
+    if quantity is None:
+        # Retrieve quantity of the nutrient in the food
+        return nutritional_info[food].get(nutrient, None)
+    else:
+        # Update quantity of the nutrient in the food
+        nutritional_info[food][nutrient] = quantity
+
+# Example usage
+food = "apple"
+nutrient = "fiber"
+
+# Update nutritional information for an apple
+update_nutritional_info(food, nutrient, 4)
+
+# Retrieve nutritional information for an apple
+fiber_quantity = update_nutritional_info(food, nutrient)
+if fiber_quantity is not None:
+    print(f"Amount of {nutrient} in an {food}: {fiber_quantity} grams")
+else:
+    print(f"No recorded quantity of {nutrient} in an {food}.")
+
+/*
+Explanation of the implementation:
+
+We define a dictionary nutritional_info to store nutritional information for different foods. Each food's nutritional information is represented as a nested dictionary, where the outer key is the food's name and the inner keys are nutrients.
+The update_nutritional_info function takes a food, a nutrient, and an optional quantity as input. If a quantity is provided, it updates the nutritional information for the specified nutrient in the given food. If no quantity is provided, it retrieves the quantity of the specified nutrient from the nutritional information for the given food.
+We demonstrate the usage of the system by updating and retrieving the fiber content of an apple.
+This implementation follows the logical representation provided in FOL, where ∀x∀y∀z (Food(x) ∧ Nutrient(y) ∧ Quantity(z) ∧ Nutritional_Info(x, y, z)). It allows us to store and retrieve nutritional information for different foods, including their nutrients and quantities.
+
+In a real-world scenario, you would need to expand the system to support more nutrients and foods, handle additional functionalities such as meal composition analysis and dietary planning, and potentially integrate the system with a user interface for input/output and a database for storing and querying nutritional information.
+*/
