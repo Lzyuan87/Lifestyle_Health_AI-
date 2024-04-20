@@ -1,0 +1,26 @@
+# Define a dictionary to store activity-outcome relationships
+activity_outcome_relationships = {
+    "running": ["improved cardiovascular health", "weight loss"],
+    "swimming": ["improved muscle strength", "stress relief"],
+    # Add more activity-outcome relationships as needed
+}
+
+# Function to retrieve outcomes associated with a physical activity
+def get_outcomes(physical_activity):
+    return activity_outcome_relationships.get(physical_activity, "No outcomes available for this physical activity.")
+
+# Example usage
+physical_activity = "running"
+outcomes = get_outcomes(physical_activity)
+print(f"Outcomes associated with {physical_activity}: {outcomes}")
+
+/*
+Explanation of the implementation:
+
+We define a dictionary activity_outcome_relationships to store relationships between physical activities and health outcomes. Each key-value pair represents a physical activity and a list of associated health outcomes.
+The get_outcomes function takes a physical activity as input and retrieves the associated outcomes from the activity_outcome_relationships dictionary. If no outcomes are found for the given physical activity, it returns a default message indicating that no outcomes are available.
+We demonstrate the usage of the system by retrieving outcomes associated with the "running" physical activity.
+This implementation follows the logical representation provided in FOL, where ∀x∀y (Physical_Activity(x) ∧ Health_Outcome(y) ∧ Activity_Outcome(x, y)). It allows us to represent and retrieve relationships between physical activities and health outcomes.
+
+In a real-world scenario, you would need to expand the system to include more physical activities and associated outcomes, handle additional functionalities such as personalized recommendations and feedback collection, and potentially integrate the system with a user interface for input/output and a database for storing and querying activity-outcome relationships.
+*/
