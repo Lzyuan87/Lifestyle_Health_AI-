@@ -1,0 +1,37 @@
+# Define a list of lifestyle factor - health metric relationships
+lifestyle_health_relationships = [
+    {"user": "Alice", "lifestyle_factor": "diet", "health_metric": "cholesterol", "effect": "increase"},
+    {"user": "Bob", "lifestyle_factor": "exercise", "health_metric": "weight", "effect": "decrease"},
+    # Add more relationships as needed
+]
+
+# Function to infer the effect of lifestyle factors on health metrics
+def infer_health_effect(user, lifestyle_factor, health_metric):
+    for relationship in lifestyle_health_relationships:
+        if relationship["user"] == user and \
+           relationship["lifestyle_factor"] == lifestyle_factor and \
+           relationship["health_metric"] == health_metric:
+            return relationship["effect"]
+    return None  # Return None if no matching relationship is found
+
+# Example usage
+user = "Alice"
+lifestyle_factor = "diet"
+health_metric = "cholesterol"
+effect = infer_health_effect(user, lifestyle_factor, health_metric)
+if effect:
+    print(f"The {lifestyle_factor} of {user} affects {health_metric} by {effect}.")
+else:
+    print(f"No relationship found for {lifestyle_factor} and {health_metric} for {user}.")
+
+
+/*
+Explanation of the implementation:
+
+We define a list lifestyle_health_relationships that contains relationships between users, lifestyle factors, health metrics, and their effects. Each relationship is represented as a dictionary with keys "user", "lifestyle_factor", "health_metric", and "effect".
+The infer_health_effect function takes a user, a lifestyle factor, and a health metric as input and iterates through the lifestyle_health_relationships list to find a matching relationship. If a match is found, it returns the effect of the lifestyle factor on the health metric; otherwise, it returns None.
+We demonstrate the usage of the system by providing an example user, lifestyle factor, and health metric, and printing the inferred effect.
+This implementation follows the logical representation provided in FOL, where ∀x∀y∀z (User(x) ∧ Lifestyle_Factor(y) ∧ Health_Metric(z) ∧ Affects(y, z)). It allows us to infer how lifestyle factors affect health metrics for different users based on predefined relationships.
+
+In a real-world scenario, you would need to handle more complex relationships, incorporate additional factors such as time, age, and genetics, and potentially integrate the system with a user interface for input/output and a database for storing and updating relationships.
+*/
