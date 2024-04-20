@@ -1,0 +1,38 @@
+# Define a dictionary to store risk factor assessments
+risk_factor_assessments = {}
+
+# Function to update or retrieve a user's risk factor assessment
+def update_risk_factor_assessment(user, risk_factor, probability=None):
+    if user not in risk_factor_assessments:
+        risk_factor_assessments[user] = {}
+    if probability is None:
+        # Retrieve probability of the risk factor
+        return risk_factor_assessments[user].get(risk_factor, None)
+    else:
+        # Update probability of the risk factor
+        risk_factor_assessments[user][risk_factor] = probability
+
+# Example usage
+user = "Alice"
+risk_factor = "smoking"
+
+# Update Alice's smoking risk factor assessment
+update_risk_factor_assessment(user, risk_factor, 0.8)
+
+# Retrieve Alice's smoking risk factor assessment
+smoking_probability = update_risk_factor_assessment(user, risk_factor)
+if smoking_probability is not None:
+    print(f"{user}'s probability of {risk_factor}: {smoking_probability}")
+else:
+    print(f"{user} has no recorded assessment for {risk_factor}.")
+
+/*
+Explanation of the implementation:
+
+We define a dictionary risk_factor_assessments to store risk factor assessments for different users. Each user's risk factor assessments are represented as a nested dictionary, where the outer key is the user's name and the inner keys are risk factors.
+The update_risk_factor_assessment function takes a user, a risk factor, and an optional probability as input. If a probability is provided, it updates the user's risk factor assessment with the specified probability for the given risk factor. If no probability is provided, it retrieves the probability of the specified risk factor from the user's risk factor assessment.
+We demonstrate the usage of the system by updating and retrieving Alice's smoking risk factor assessment.
+This implementation follows the logical representation provided in FOL, where ∀x∀y∀z (User(x) ∧ Risk_Factor(y) ∧ Probability(z) ∧ Risk_Factor_Assessment(x, y, z)). It allows us to store and retrieve risk factor assessments for different users and risk factors, along with their corresponding probabilities.
+
+In a real-world scenario, you would need to expand the system to support more risk factors, handle additional functionalities such as trend analysis and risk mitigation strategies, and potentially integrate the system with a user interface for input/output and a database for storing and querying risk factor assessments.
+*/
