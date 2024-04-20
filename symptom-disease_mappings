@@ -1,0 +1,32 @@
+# Define a list of symptom-disease mappings
+symptom_disease_mappings = [
+    {"symptom": "fever", "disease": "flu"},
+    {"symptom": "cough", "disease": "cold"},
+    {"symptom": "fatigue", "disease": "anemia"},
+    # Add more mappings as needed
+]
+
+# Function to perform inference based on symptom input
+def infer_disease(symptoms):
+    inferred_diseases = set()
+    for symptom in symptoms:
+        for mapping in symptom_disease_mappings:
+            if mapping["symptom"] == symptom:
+                inferred_diseases.add(mapping["disease"])
+    return inferred_diseases
+
+# Example usage
+user_symptoms = ["fever", "cough"]
+inferred_diseases = infer_disease(user_symptoms)
+print("Inferred diseases based on symptoms:", inferred_diseases)
+
+/*
+Explanation of the implementation:
+
+We define a list symptom_disease_mappings that contains mappings between symptoms and diseases. Each mapping is represented as a dictionary with keys "symptom" and "disease".
+The infer_disease function takes a list of symptoms as input and iterates through the symptom_disease_mappings list to find matching mappings. If a symptom matches a symptom in the mapping, the corresponding disease is added to the set of inferred diseases.
+Finally, we demonstrate the usage of the system by providing a list of symptoms and printing the inferred diseases.
+This implementation follows the logical representation provided in first-order logic (FOL), where ∀x∀y (Symptom(x) ∧ Disease(y) ∧ Symptom_Disease(x, y)). It allows us to infer possible diseases based on the symptoms provided by the user.
+
+Keep in mind that this is a simplified example. In a real-world scenario, you would need to handle more complex relationships between symptoms and diseases, as well as potential uncertainties and exceptions. Additionally, you might consider integrating this system with a user interface for input/output and potentially with other components such as a knowledge base or database for storing and updating symptom-disease mappings.
+*/
